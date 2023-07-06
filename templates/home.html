@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="static\style.css" />
+  </head>
+  <body>
+    <p><a href="{{url_for('addemployee')}}">Add new employee</a></p>
+    <main class="table">
+      <section class="table_header">
+        <h1>EMPLOYEE TABLE</h1>
+      </section>
+      <section class="table_body">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>NAME</th>
+              <th>SALARY</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
+            </tr>
+          </thead>
+          {% for i in data %}
+          <tbody>
+            <tr>
+              <td>{{i.emp_id}}</td>
+              <td>{{i.name}}</td>
+              <td>{{i.salary}}</td>
+              <td>
+                <a href="{{url_for('get_emp',id=i.emp_id)}}">EDIT</a>
+              </td>
+              <td>
+                <a href="{{url_for('delete_emp',id=i.emp_id,_method='DELETE')}}"
+                  >DELETE</a
+                >
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

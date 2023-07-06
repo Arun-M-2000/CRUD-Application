@@ -1,0 +1,15 @@
+/* *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;} */
+
+body{
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+table,th,td{
+    padding: 1rem;
+}

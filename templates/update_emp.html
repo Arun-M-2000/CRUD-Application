@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Update_employees</title>
+  </head>
+  <body>
+    <center>
+      <form action="{{url_for('update_emp')}}" method="POST">
+        <label>Emp_id</label>
+        <input type="text" name="EMP_ID" value="{{data.emp_id}}" required />
+        <label>Name</label>
+        <input type="text" name="name" value="{{data.name}}" required />
+        <label>Salary</label>
+        <input type="text" name="salary" value="{{data.salary}}" required />
+        <input type="submit" value="update" />
+      </form>
+    </center>
+  </body>
+</html>
