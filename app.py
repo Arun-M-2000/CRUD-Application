@@ -17,32 +17,25 @@ mysql = MySQL(app)
 # Home page
 @app.route("/")
 def home():
-    print("homeemployee")
     con = mysql.connection.cursor()
     sql = "SELECT emp_id, name, salary FROM employees"
     con.execute(sql)
     result = con.fetchall()
-    #return render_template('home.html', data=result)
     return jsonify(result), 200
 
 #Add employees
 @app.route("/addemployee", methods=["GET","POST","DELETE","PUT","PATCH"])
 def addemployee():
-    print("addemployee")
     if request.method == "POST":
             EMP_ID = request.form['id']
             NAME = request.form['name']
             SALARY = request.form['salary']
-            print("SALARY",SALARY)
-            print("EMP",NAME,EMP_ID)
             con = mysql.connection.cursor()
             sql = "INSERT INTO employees (emp_id, name, salary) VALUES (%s, %s, %s)"
             try:
                 con.execute(sql, [EMP_ID, NAME, SALARY])
-                print("sql",sql)
                 mysql.connection.commit()
                 con.close()
-                print("employee added")
                 return jsonify(response={
                 "Error_message":"",
                 "Status":"Success",
@@ -65,16 +58,11 @@ def addemployee():
 #UPDTAE EMPLOYEES
 @app.route("/update_emp",methods=["GET","POST","DELETE","PUT","PATCH"])
 def update_emp():
-    print("updateemployee1")
     con=mysql.connection.cursor()
-    print("updateemployee2")
     EMP_ID = request.form.get('EMP_ID')
-    print("updateemployee3")
     con.execute("SELECT emp_id FROM employees WHERE emp_id=%s",(EMP_ID,))
     success=con.fetchone()
-    print("updateemployee4")
     if success is not None:
-        print("updateemployee5")
         if request.method=="POST":
             EMP_ID = request.form.get('EMP_ID')
             NAME = request.form.get('name')
@@ -112,7 +100,6 @@ def get_emp(id):
             con=mysql.connection.cursor()
             con.execute("SELECT * FROM employees WHERE emp_id = %s", (id,))
             result=con.fetchone()
-            print("goupdate=",result)
             return jsonify(response={
                 "Error_message":"",
                 "Status":"Success",
@@ -134,7 +121,6 @@ def get_emp(id):
 #DELETE EMPLOYEES
 @app.route("/delete_emp/<string:id>", methods=["GET","POST","DELETE","PUT","PATCH"])
 def delete_emp(id):
-    print("deleteemployee")
     con=mysql.connection.cursor()
     con.execute("SELECT emp_id FROM employees WHERE emp_id=%s",[id])
     success=con.fetchone()
