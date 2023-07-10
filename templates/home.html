@@ -4,11 +4,20 @@
     <title>Home</title>
     <link rel="stylesheet" href="static\style.css" />
   </head>
+  <p>
+  {% with messages=get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <h2>{{ message }}</h2>
+            {% endfor %}
+          {% endif %}
+       {% endwith %}</p>
+       <br>
   <body>
-    <p><a href="{{url_for('addemployee')}}">Add new employee</a></p>
+    <p style="font-size:30px;text-decoration:none;"><a href="{{url_for('addemployee')}}">Add new employee</a></p>
     <main class="table">
       <section class="table_header">
-        <h1>EMPLOYEE TABLE</h1>
+        <h1 style="text-align:center">EMPLOYEE TABLE</h1>
       </section>
       <section class="table_body">
         <table>
@@ -28,10 +37,10 @@
               <td>{{i.name}}</td>
               <td>{{i.salary}}</td>
               <td>
-                <a href="{{url_for('get_emp',id=i.emp_id)}}">EDIT</a>
+                <a href="{{url_for('get_emp',id=i.emp_id)}}?_method=GET">EDIT</a>
               </td>
               <td>
-                <a href="{{url_for('delete_emp',id=i.emp_id,_method='DELETE')}}"
+                <a href="{{url_for('delete_emp', id=i.emp_id)}}?_method=DELETE"
                   >DELETE</a
                 >
               </td>
