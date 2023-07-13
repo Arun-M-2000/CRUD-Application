@@ -7,10 +7,10 @@ from MySQLdb import IntegrityError
 app = Flask(__name__)
 
 # MySQL connection
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = "Arun@2000"
-app.config["MYSQL_DB"] = "tata"
+app.config["MYSQL_HOST"] = "sql6.freesqldatabase.com"
+app.config["MYSQL_USER"] = "sql6631757"
+app.config["MYSQL_PASSWORD"] = "rk852em5Qu"
+app.config["MYSQL_DB"] = "sql6631757"
 app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 mysql = MySQL(app)
 
@@ -64,6 +64,7 @@ def get_emp(id):
         return render_template("update_emp.html",data=result)
     else:
         return redirect(url_for('home'))
+#DELETE EMPLOYEES
 #DELETE EMPLOYEES
 @app.route("/delete_emp/<string:id>", methods=["GET","DELETE"])
 def delete_emp(id):
