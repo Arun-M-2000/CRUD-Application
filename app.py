@@ -4,6 +4,10 @@ from flask import jsonify
 import MySQLdb
 from MySQLdb import IntegrityError
 
+
+
+
+
 app = Flask(__name__)
 #MYSQL CONNECTION
 app.config["MYSQL_HOST"] = "sql6.freesqldatabase.com"
