@@ -5,8 +5,7 @@ import MySQLdb
 from MySQLdb import IntegrityError
 
 app = Flask(__name__)
-
-# MySQL connection
+#MYSQL CONNECTION
 app.config["MYSQL_HOST"] = "sql6.freesqldatabase.com"
 app.config["MYSQL_USER"] = "sql6631757"
 app.config["MYSQL_PASSWORD"] = "rk852em5Qu"
