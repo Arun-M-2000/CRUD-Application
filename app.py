@@ -25,6 +25,9 @@ def home():
     result = con.fetchall()
     return render_template('home.html',data=result), 200
 
+
+
+
 #Add Employeess
 @app.route("/addemployee", methods=["POST", "GET"])
 def addemployee():
