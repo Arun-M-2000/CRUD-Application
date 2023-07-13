@@ -4,6 +4,8 @@ from flask import jsonify
 import MySQLdb
 from MySQLdb import IntegrityError
 
+
+
 app = Flask(__name__)
 
 # MySQL connection
